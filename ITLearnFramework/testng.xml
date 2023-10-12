@@ -6,13 +6,13 @@
 </listeners>
   <test thread-count="5" name="Test">
     <classes>
- <!--     <class name="com.itlearn.testcases.LoginTestDriverData"/> -->
+     <class name="com.itlearn.testcases.LoginTestDriverData"/> 
       
      <!--      <class name="com.itlearn.testcases.SerachTestCase"/> -->
      
     <!--  <class name="com.itlearn.testcases.DashBoardTestCase"/> -->
       
-      <class name="com.itlearn.testcases.PaymentTestCase"/>
+    <!--  <class name="com.itlearn.testcases.PaymentTestCase"/> -->
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

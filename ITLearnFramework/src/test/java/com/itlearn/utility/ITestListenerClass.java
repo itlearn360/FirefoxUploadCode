@@ -1,7 +1,9 @@
 package com.itlearn.utility;
 
 import java.io.File;
+import java.io.PrintStream;
 
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -44,14 +46,19 @@ public class ITestListenerClass implements ITestListener {
 	  public void onTestSuccess(ITestResult result) {
 	  System.out.println("Name of the test method successfully excuted "+result.getName());
 	   test=reports.createTest(result.getName());
-	   test.log(Status.PASS, MarkupHelper.createLabel("Name of the skip test case is: "+result.getName(),ExtentColor.GREEN));
+	   test.log(Status.PASS, MarkupHelper.createLabel("Name of the passed test case is: "+result.getName(),ExtentColor.GREEN));
 	  }
 
 	
 	  public void onTestFailure(ITestResult result) {
 	    System.out.println("Name of test method failed:"+result.getName());
+	    
+	    String failedTest =result.getName();
+	    String screeshot="./Screenshots/";
 	    test=reports.createTest(result.getName());
-	    test.log(Status.FAIL, MarkupHelper.createLabel("Name of the skip test case is: "+result.getName(),ExtentColor.RED));
+	    test.log(Status.FAIL, MarkupHelper.createLabel("Name of the failed  test case is: "+result.getName(),ExtentColor.RED))
+	    .addScreenCaptureFromPath(screeshot +failedTest + ".png" );
+	   
 	    
 	    String screenShotPath= System.getProperty("user.dir") +"\\Screenshots\\" + result.getName() + ".png";
 	    
